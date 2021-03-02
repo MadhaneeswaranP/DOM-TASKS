@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Validation</title>
+    <style>
+        body{
+            text-align: center;
+        }
+        div{
+            display: inline-block;
+        }
+        input,button{
+            display: inline-block;
+            padding:15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Enter D.O.B</h2>
+        <input type="date" id="date">
+        <button  onclick="calculateAge()">Calculate Age</button>
+        <h1>
+            <h2 id='year'></h2>
+            <h2 id='month'></h2>
+            <h2 id='days'></h2>
+            <h2 id='hours'></h2>
+            <h2 id='seconds'></h2>
+            <h2 id='milliseconds'></h2>
+        </h1>
+    </div>
+    <!-- placeholder="D.O.B" -->
+    <script>
+    function calculateAge(){   
+        var DOB=new Date(document.querySelector('#date').value);
+        
+
+        var millisecondsBetweenDOB = Date.parse(DOB);
+        var millisecondsBetweenNow = Date.now();
+        var ageInMilliseconds = millisecondsBetweenNow-millisecondsBetweenDOB;    
+        var second = 1000;
+        var milliseconds = ageInMilliseconds;
+        var minute = second *60;
+        var hour = minute*60;
+        var day = hour*24;
+        var month = day*30; 
+        var year=day*365;
+
+        var years = Math.round(milliseconds/year);
+        var months = years*12;
+        var days = years*365;
+        var hours = Math.round(milliseconds/hour);
+        var seconds = Math.round(milliseconds/second);
+
+        
+       document.getElementById('year').innerHTML='Age in Years:'+years;
+       document.getElementById('month').innerHTML='Age in Month:'+months;
+       document.getElementById('days').innerHTML='Age in Days:'+days;
+       document.getElementById('hours').innerHTML='Age in hours:'+hours;
+       document.getElementById('seconds').innerHTML='Age in seconds:'+seconds;
+       document.getElementById('milliseconds').innerHTML='Age in MilliSeconds:'+milliseconds;
+       
+    }
+    </script>
+</body>
+</html>

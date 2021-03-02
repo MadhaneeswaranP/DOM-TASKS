@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>8-Digit-Number-Mix</title>
+</head>
+<body>
+    
+    <input type="button" class="btn btn-success" onclick="yes()" value="Generate numbers">
+    <h4 id="divid"> </h4>
+    
+<script>
+function yes(){  
+  var number=12345678;
+  var output=[];
+  var s=number.toString();
+  function change(n){
+    if(output.length<s.length){
+    var rem="";
+    if(n!==0){
+       rem=n%10 +""+ Math.trunc(n/10);
+    }
+    output.push(rem);
+    change(rem);
+    }
+  }
+  change(number);
+  var items=document.querySelector('#divid');
+  items.innerHTML=output;
+}
+</script>
+</body>
+</html>
